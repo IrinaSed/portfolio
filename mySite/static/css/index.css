@@ -1,13 +1,13 @@
 @font-face
 {
     font-family: Dpark;
-    src: url(Fonts/dpark.ttf);
+    src: url(../fonts/dpark.ttf);
 }
 
 
 body
 {
-    background: url(Images/background.jpg);
+    background: url(../images/background.jpg);
     width: auto;
 }
 
