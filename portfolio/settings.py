@@ -26,7 +26,7 @@ SECRET_KEY = ')9&b(ko&oyqe21+7r!@n7t3^(h6j_*1d6(=8f^ctj2rrlpzds0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['35.165.167.37', 'irinased.ru', 'localhost']
 
 
 # Application definition
@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'portfolio',
+        'USER': 'irina',
+        'PASSWORD': 'Ubuntu123',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -122,4 +126,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'miSite', 'static').replace('\\', '/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'mySite', 'static').replace('\\', '/')
