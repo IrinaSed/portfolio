@@ -6,23 +6,36 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Galery</title>
-    <link href="{% static 'css/galery.css' %}" rel="stylesheet">
+    <title>Gallery</title>
+    <link href="{% static 'css/gallery.css' %}" rel="stylesheet">
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
 </head>
-<body>
-    <div class="galery">
-        <div class="big-photo">
-            <img src="{% static 'images/karacul.jpg' %}" alt="Озеро каракуль">
-        </div>
-        <div class="mini-photo">
-            <img src="{% static 'images/ekb.jpg' %}" alt="Екатеринбург">
-            <img src="{% static 'images/bonfire.jpg' %}" alt="Костёр">
-            <img src="{% static 'images/higtEkb.jpg' %}" alt="Высокий Екатеринбург">
-            <img src="{% static 'images/mat-mex.jpg' %}" alt="Мат-мех">
-            <img src="{% static 'images/konfuzy.jpg' %}" alt="Конфуций">
+<body onkeydown="onEsc(event)" onload="onLoad()">
+    <div class="gallery">
+        {% for anchor, id, image, min_image in images %}
+            <a href="{{ anchor }}" class="cards-img">
+                <img src="{% static min_image %}" alt="" class="main-img load">
+            </a>
+            <article id="{{ id }}" class="cards">
+                <div class="div-image">
+                    <img src="{% static image %}" alt="" class="modal-image load">
+                </div>
+            </article>
+            <a href="#close" title="Закрыть" class="close">
+                <img src="{% static 'images/close.png' %}" alt="">
+            </a>
+        {% endfor %}
+        <div id="help" title="Help" class="help">
+            <div class="help-div">
+                <h4>Справка по галереи</h4>
+                <p>Чтобы переключать фотографии можно воспользоваться
+                    клавишами вправо/влево или мышкой</p>
+                <p>ESC скрывает картинку, закрыть картинку
+                    также можно с помощью крестика в правом углу</p>
+            </div>
         </div>
     </div>
+
     <div class="content">
         <div class="content-meny">
             <div class="menu">
@@ -37,5 +50,6 @@
             </div>
         </div>
     </div>
+<script src="{% static 'scripts/index.js' %}"></script>
 </body>
 </html>
