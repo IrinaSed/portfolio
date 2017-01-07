@@ -7,12 +7,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <title>My Site</title>
+    <title>Comments</title>
 </head>
 <body>
    <div class="content">
-       <div class="my-name">
-           <p class="my-name">Седова<br> Ирина</p>
+       <div class="common-comments">
+           {% for visit in visits %}
+               <div class="visit">
+                   <span><span class="pre">IP: </span>{{ visit.ip }}</span><br>
+                   <span><span class="pre">Страничка: </span>{{ visit.page }}</span><br>
+                   <span><span class="pre">User-Agent: </span>{{ visit.user_agent }}</span><br>
+                   <span><span class="pre">Когда: </span>{{ visit.created }}</span>
+               </div>
+           {% endfor %}
        </div>
        <div class="content-meny">
            <div class="menu">
@@ -24,7 +31,7 @@
                    <li><a target="_blank" href="/info">Информация обо мне</a></li>
                    <li><a target="_blank" href="/gallery">Галерея</a></li>
                    <li><a target="_blank" href="/comment">Отзывы</a></li>
-                   <li><img src="/visits?path=/" alt="" class="visits"></li>
+                   <li><img src="/visits?path=/visit" alt="" class="visits"></li>
                    <li><a target="_blank" href="/visit">Все посещения</a></li>
                </ul>
            </div>

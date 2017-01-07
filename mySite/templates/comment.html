@@ -7,13 +7,28 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <title>My Site</title>
+    <title>Comments</title>
 </head>
-<body>
+<body onload="onLoad1()">
    <div class="content">
-       <div class="my-name">
-           <p class="my-name">Седова<br> Ирина</p>
+       <div class="common-comments">
+           {% for comment in comments %}
+               <div class="comment">
+                   <div class="comment-message">
+                       <pre>{{ comment.message }}</pre>
+                   </div>
+                   <div class="comment-username">
+                       {{ comment.username }}
+                   </div>
+               </div>
+           {% endfor %}
        </div>
+       <form class="comment-form" method="post" action="/comment">
+           {% csrf_token %}
+           {{ form.username }}
+           {{ form.message }}
+           <button class="comment-button" type="submit">Написать</button>
+       </form>
        <div class="content-meny">
            <div class="menu">
                <p>Меню</p>
@@ -24,11 +39,16 @@
                    <li><a target="_blank" href="/info">Информация обо мне</a></li>
                    <li><a target="_blank" href="/gallery">Галерея</a></li>
                    <li><a target="_blank" href="/comment">Отзывы</a></li>
-                   <li><img src="/visits?path=/" alt="" class="visits"></li>
+                   <li><img src="/visits?path=/comment" alt="" class="visits"></li>
                    <li><a target="_blank" href="/visit">Все посещения</a></li>
                </ul>
            </div>
        </div>
    </div>
+   <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="{% static 'scripts/comment.js' %}"></script>
 </body>
 </html>

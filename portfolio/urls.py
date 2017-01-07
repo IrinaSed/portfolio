@@ -16,11 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from mySite.views import index, gallery, info
+from mySite.views import index, gallery, info, comment, visits, visit, like
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^gallery', gallery),
-    url(r'^info', info)
+    url(r'^info', info),
+    url(r'^comment', comment),
+    url(r'^visits', visits),
+    url(r'^visit', visit),
+    url(r'^like', like),
 ]

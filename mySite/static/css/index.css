@@ -93,6 +93,7 @@ div.content-meny:hover .ascent-menu ul
     width: 135px;
     color: aqua;
     background-color: aliceblue;
+    overflow-y: auto;
 }
 
 li:hover
@@ -104,4 +105,58 @@ li:hover
 li:hover a
 {
     color: azure;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+.comment {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    margin-bottom: 20px;
+}
+
+.comment-message:before {
+    content: 'Сообщение: ';
+    color: #7ec0ee;
+}
+
+.comment-username:before {
+    content: 'Имя: ';
+    color: #7ec0ee;
+}
+
+.comment-form,
+.comment-button {
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    display: inline-block;
+}
+
+.message-input, .username-input {
+    border: none;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 4px;
+    resize: none;
+}
+
+.visit {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    margin-bottom: 20px;
+}
+
+.visit > span {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.pre {
+    color: #7ec0ee;
 }

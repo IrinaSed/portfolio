@@ -10,7 +10,7 @@
     <link href="{% static 'css/gallery.css' %}" rel="stylesheet">
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
 </head>
-<body onkeydown="onEsc(event)" onload="onLoad()">
+<body onkeydown="onEsc(event)" onload="onLoad();onLoad1()">
     <div class="gallery">
         {% for anchor, id, image, min_image in images %}
             <a href="{{ anchor }}" class="cards-img">
@@ -19,6 +19,12 @@
             <article id="{{ id }}" class="cards">
                 <div class="div-image">
                     <img src="{% static image %}" alt="" class="modal-image load">
+                    <div class="like">
+                        <button onclick="like('{{ image }}')" class="like-button">
+                            <img src="{% static 'images/like.png' %}" width="50" height="50" />
+                        </button>
+                        <img class="likes-count" src="/like?what=count&anchor={{ image }}">
+                    </div>
                 </div>
             </article>
             <a href="#close" title="Закрыть" class="close">
@@ -46,10 +52,18 @@
                     <li><a href="/">Главная</a></li>
                     <li><a target="_blank" href="/info">Информация обо мне</a></li>
                     <li><a target="_blank" href="/gallery">Галерея</a></li>
+                    <li><a target="_blank" href="/comment">Отзывы</a></li>
+                    <li><img src="/visits?path=/gallery" alt="" class="visits"></li>
+                    <li><a target="_blank" href="/visit">Все посещения</a></li>
                 </ul>
             </div>
         </div>
     </div>
-<script src="{% static 'scripts/index.js' %}"></script>
+    <script src="{% static 'scripts/index.js' %}"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="{% static 'scripts/comment.js' %}"></script>
 </body>
 </html>

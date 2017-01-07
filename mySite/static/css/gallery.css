@@ -114,3 +114,16 @@ body
 .load{
     background:url("https://www.creditmutuel.fr/cmne/fr/banques/webservices/nswr/images/loading.gif") no-repeat center center rgba(0,0,0,0.25)
 }
+
+.like {
+    color: #fff;
+}
+
+.like-button {
+    background: transparent;
+    border: none;
+}
+
+.like-button:hover {
+    cursor: pointer;
+}
