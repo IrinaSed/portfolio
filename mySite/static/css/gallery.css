@@ -116,6 +116,8 @@ body
 }
 
 .like {
+    position: relative;
+    z-index: 1000;
     color: #fff;
 }
 

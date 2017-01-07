@@ -47,7 +47,6 @@ def comment(request):
 
 
 def like(request):
-    Visit.make(request, '/like')
     if request.method == 'GET' and request.GET.get('what'):
         response = HttpResponse(content=get_like_image(
             request.GET.get('anchor')
