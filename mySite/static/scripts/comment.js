@@ -42,8 +42,7 @@ function comment() {
         success : function(json) {
             $('#message').val('');
             $('#username').val('');
-            appendComment(json);
-            SYNC_TIME = Date.now();
+            sync();
         },
 
         error : function () {
