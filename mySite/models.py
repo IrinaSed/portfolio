@@ -40,6 +40,11 @@ class Visit(models.Model):
 class Comment(models.Model):
     message = models.CharField(max_length=500)
     username = models.CharField(max_length=50)
+    created = models.DateTimeField(auto_now=True)
+
+    @staticmethod
+    def get_new_created(last_update):
+        return list(map(dict, Comment.objects.filter(created__gt=last_update).values()))
 
     @staticmethod
     def make(form):

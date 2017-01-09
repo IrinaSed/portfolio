@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from mySite.views import index, gallery, info, comment, visits, visit, like
+from mySite.views import index, gallery, info, comment, visits, visit, like, comments_update
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^gallery', gallery),
     url(r'^info', info),
     url(r'^comment', comment),
+    url(r'^sync_comments', comments_update),
     url(r'^visits', visits),
     url(r'^visit', visit),
     url(r'^like', like),

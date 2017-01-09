@@ -1,3 +1,4 @@
+import datetime
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -75,3 +76,10 @@ def visit(request):
     return render(request, 'visit.html', context={
         'visits': Visit.objects.all(),
     })
+
+
+def comments_update(request):
+    if request.method == 'GET' and request.is_ajax():
+        last_update = datetime.datetime.fromtimestamp(int(request.GET.get('sync_time')) / 1e3)
+        last = Comment.get_new_created(last_update)
+        return JsonResponse({'new': last})

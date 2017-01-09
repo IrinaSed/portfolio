@@ -1,3 +1,7 @@
+var SYNC_TIME = Date.now() - 10000;
+var csrftoken = getCookie('csrftoken');
+
+
 function getCookie(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
@@ -6,6 +10,7 @@ function getCookie(name) {
 
 
 function onLoad1() {
+    setInterval(sync, 2000);
     $('.comment-form').on('submit', function (event) {
         event.preventDefault();
         comment();
@@ -38,6 +43,7 @@ function comment() {
             $('#message').val('');
             $('#username').val('');
             appendComment(json);
+            SYNC_TIME = Date.now();
         },
 
         error : function () {
@@ -45,6 +51,27 @@ function comment() {
         }
     });
 }
+
+function sync() {
+    $.ajax({
+        url: "sync_comments?sync_time=" + SYNC_TIME,
+        type: "GET",
+        cache: false,
+
+        success : function(json) {
+            json.new.forEach(function (element) {
+                appendComment(element);
+            });
+        },
+
+        error : function() {
+            console.log('Ошибка');
+        }
+    });
+
+    SYNC_TIME = Date.now();
+}
+
 
 function like(anchor) {
     $.ajax({
@@ -64,8 +91,6 @@ function like(anchor) {
         }
     });
 }
-
-var csrftoken = getCookie('csrftoken');
 
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
